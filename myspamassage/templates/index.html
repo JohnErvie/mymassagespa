@@ -1,0 +1,94 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Body Spa Massage</title>
+    
+    <link rel="stylesheet" href="{% static 'style.css' %}" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Righteous&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fugaz+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Play&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&family=Play&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header>
+        
+        <a href="{% url 'home' %}"><img class="logo" src="../static/images/logo.jpeg"></a>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="{% url 'booknow' %}">Book Now</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+        <a class="signreg-btn" href="#"> <button>Sign in</button>  </a>
+    </header>
+
+<section class="header"> 
+<div class="text-box">
+    <h1>My Body Spa Massage</h1>
+    <h1 class="typing">Hello</h1>
+    <p>
+        Experienced Massage Therapist
+    </p>
+    <a href="{% url 'booknow' %}" class="hero-btn">Book Now</a>
+</div>
+
+</section>
+
+<!----- Safety and Trust ------>
+
+<section class="safetytrust">
+    <h4 class="sat">Safety and Trust </h4>
+    <h1 class="des1">Get Treated Like Royalty</h1>
+    <h4 class="des2">Why should you choose MY BODY SPA MASSAGE? Best in industry.</h4>
+
+    <div class="row">
+        <div class="safetytrust-col">
+            <img src="../static/images/special.png">
+            <h2>Feel Special</h2>
+            <p>The best method to completely relax and unwind is to book a massage right away.</p>
+        </div>
+        <div class="safetytrust-col">
+            <img src="../static/images/provide.png">
+            <h2>We Provide</h2>
+            <p>Deep Tissue Massage Therapist helps you to relieves muscle tension and cramping.</p>
+        </div>
+        <div class="safetytrust-col">
+            <img src="../static/images/offer.png">
+            <h2>We Offer</h2>
+            <p>Thai massage gives the cells more oxygen and nourishment.</p>
+        </div>
+        <div class="safetytrust-col">
+            <img src="../static/images/experience.png">
+            <h2>Experience</h2>
+            <p>Japanese Nuru massage spas enhance "Feel-Good" and promote balance in the body, mind, and soul.</p>
+        </div>
+    </div>
+
+</section>
+
+<!---- do ---->
+<section class="do">
+    <h1 class="dotitle">What should I do if I'm asked to make a payment somewhere else than the My Body SPA Massage Website?</h1>
+    <img src="../static/images/contact.png">
+    <h2 class="incharge">You are in charge</h2>
+    <p class="p-dotitle">You should never be requested to pay a massage therapist directly or to transfer money using PayPal, Venmo, or another Cash App like Western Union, MoneyGram, Xoom, Venmo, or Paypal. If you are, there are simple ways to let us know so that we can protect your identity, finances, and personal information.</p>
+    <br>
+    <br>
+    <h3 class="do-email">Email Us: 
+        <a href = "mailto:abc@example.com?subject = Feedback&body = Message">
+        example@gmail.com
+        </a>
+    </h3>
+
+</section>
+
+</body>
+<script src="../static/app.js"></script>
+</html>

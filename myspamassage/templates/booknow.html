@@ -1,0 +1,143 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" type="text/css" href="{% static 'booknow.css' %}" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Now</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Righteous&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fugaz+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Play&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&family=Play&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+</head>
+<body>
+    <header>
+        
+        <a href="{% url 'home' %}"><img class="logo" src="../static/images/logo.jpeg"></a>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="{% url 'booknow' %}">Book Now</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+        <a class="signreg-btn" href="#"> <button>Sign in</button>  </a>
+    </header>
+
+<!---- Footer ---->
+<div class="progress-tab-bar-section">
+  <form action="#" class="form">
+      <h1 class="text-center">Massage Booking Form</h1>
+      <!-- Progress bar -->
+      <div class="progressbar">
+        <div class="progress" id="progress"></div>
+        
+        <div
+          class="progress-step progress-step-active"
+          data-title="Billing Info"
+        ></div>
+        <div class="progress-step" data-title="Schedule"></div>
+        <div class="progress-step" data-title="Payment"></div>
+        <div class="progress-step" data-title="Summary"></div>
+      </div>
+
+      <!-- Steps -->
+      <div class="form-step form-step-active">
+        <div class="input-group">
+          <label for="fullname">Full Name</label>
+          <input type="text" name="fullname" id="fullname" />
+        </div>
+        <div class="input-group">
+          <label for="address">Address</label>
+          <input type="text" name="address" id="address" />
+        </div>
+        <div class="input-group">
+          <label for="ssn">SSN Number (Optional)</label>
+          <input type="number" name="ssn" id="ssn" />
+        </div>
+        <div class="input-group">
+          <label for="phonenumber">Phone Number</label>
+          <input type="number" name="phonenumber" id="phonenumber" />
+        </div>
+        <div class="input-group">
+          <label for="email">Email</label>
+          <input type="email" name="email" id="email" />
+        </div>
+        <div class="input-group">
+          <label for="password">Password</label>
+          <input type="password" name="password" id="password" />
+        </div>
+        <div class="">
+          <a href="#" class="btn btn-next width-50 ml-auto">Next</a>
+        </div>
+      </div>
+      <div class="form-step">
+        <div class="input-group">
+          <label for="scheddate">Schedule Date</label>
+          <input type="date" name="scheddate" id="scheddate" />
+        </div>
+        <div class="input-group">
+          <label for="time">Time</label>
+          <input type="time" name="time" id="time" />
+        </div>
+        <div class="btns-group">
+          <a href="#" class="btn btn-prev">Previous</a>
+          <a href="#" class="btn btn-next">Next</a>
+        </div>
+      </div>
+      <div class="form-step">
+        <div class="input-group">
+          <label for="ccnumber">Credit Card Number</label>
+          <input type="ccnumber" name="ccnumber" id="ccnumber" />
+        </div>
+        <div class="input-group">
+          <label for="expdate">Expiry Date</label>
+          <input type="month" name="expdate" id="expdate" />
+        </div>
+        <div class="input-group">
+          <label for="cvv">CVV</label>
+          <input type="number" inputmode="numeric" name="cvv" id="cvv" min="100" max="999" maxlength="3"/>
+        </div>
+        <div class="btns-group">
+          <a href="#" class="btn btn-prev">Previous</a>
+          <a href="#" class="btn btn-next">Next</a>
+        </div>
+      </div>
+      <div class="form-step">
+        <div class="input-group">
+          <label for="password">Password</label>
+          <input type="password" name="password" id="password" />
+        </div>
+        <div class="input-group">
+          <label for="confirmPassword">Confirm Password</label>
+          <input
+            type="password"
+            name="confirmPassword"
+            id="confirmPassword"
+          />
+        </div>
+        <div class="btns-group">
+          <a href="#" class="btn btn-prev">Previous</a>
+          <input type="submit" value="Submit" class="btn" />
+        </div>
+      </div>
+    </form>
+  
+  
+</div>
+
+
+    
+</body>
+
+<script src="../static/booknow.js"></script>
+</html>
+
