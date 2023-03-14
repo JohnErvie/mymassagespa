@@ -29,7 +29,7 @@
                 <li><a href="#">Contact</a></li>
             </ul>
         </nav>
-        <a class="signreg-btn" href="#"> <button>Sign in</button>  </a>
+        <!-- <a class="signreg-btn" href="#"> <button>Sign in</button>  </a> --->
     </header>
 
 <!---- Footer ---->
@@ -44,73 +44,120 @@
           class="progress-step progress-step-active"
           data-title="Billing Info"
         ></div>
-        <div class="progress-step" data-title="Schedule"></div>
+        <div class="progress-step" data-title="Massage Offers and Schedule"></div>
         <div class="progress-step" data-title="Payment"></div>
-        <div class="progress-step" data-title="Summary"></div>
+        <!-- <div class="progress-step" data-title="Summary"></div> --->
       </div>
 
       <!-- Steps -->
-      <div class="form-step form-step-active">
+      <div id="error"></div>
+      <div class="form-step form-step-active" id="infoForm">
         <div class="input-group">
-          <label for="fullname">Full Name</label>
-          <input type="text" name="fullname" id="fullname" />
+          <label for="fullname" class="required">Full Name</label>
+          <input type="text" name="fullname" id="fullname" value="" required/>
         </div>
         <div class="input-group">
-          <label for="address">Address</label>
-          <input type="text" name="address" id="address" />
+          <label for="address" class="required">Address</label>
+          <input type="text" name="address" id="address" required/>
         </div>
         <div class="input-group">
           <label for="ssn">SSN Number (Optional)</label>
           <input type="number" name="ssn" id="ssn" />
         </div>
         <div class="input-group">
-          <label for="phonenumber">Phone Number</label>
-          <input type="number" name="phonenumber" id="phonenumber" />
+          <label for="phonenumber" class="required">Phone Number</label>
+          <input type="number" name="phonenumber" id="phonenumber" required/>
         </div>
         <div class="input-group">
-          <label for="email">Email</label>
-          <input type="email" name="email" id="email" />
+          <label for="email" class="required">Email</label>
+          <input type="email" name="email" id="email" required/>
         </div>
         <div class="input-group">
-          <label for="password">Password</label>
-          <input type="password" name="password" id="password" />
+          <label for="password" class="required">Password</label>
+          <input type="password" name="password" id="password"/>
         </div>
         <div class="">
-          <a href="#" class="btn btn-next width-50 ml-auto">Next</a>
+          <a class="btn btn-next width-50 ml-auto" type="submit">
+            <button type="submit">Next</button>
+          </a>
         </div>
+        <button type="submit">Submit</button>
       </div>
       <div class="form-step">
         <div class="input-group">
-          <label for="scheddate">Schedule Date</label>
-          <input type="date" name="scheddate" id="scheddate" />
+          <label for="offer" class="required">Offers</label>
+          
+          
+          <label class="container">1 hour of massage for only €150
+            <input type="radio" name="offers" id="offersR1">
+            <span class="checkmark"></span>
+          </label>
+          
+          <label class="container">2 hours of massage for only €200
+            <input type="radio" name="offers" id="offersR2">
+            <span class="checkmark"></span>
+          </label>
+          
+          <label class="container">3 hours and 30 minutes of massage for only €250
+            <input type="radio" checked="checked" name="offers" id="offersR3">
+            <span class="checkmark"></span>
+          </label>
+          <label for="scheddate" class="required">Schedule Date</label>
+          <input type="date" name="scheddate" id="scheddate" required/>
         </div>
         <div class="input-group">
-          <label for="time">Time</label>
-          <input type="time" name="time" id="time" />
+          <label for="time" class="required">Stating Time</label>
+          <input type="time" name="time" id="time" required/>
         </div>
         <div class="btns-group">
           <a href="#" class="btn btn-prev">Previous</a>
-          <a href="#" class="btn btn-next">Next</a>
+          <a class="btn btn-next" type="submit">
+            <button type="submit">Next</button>
+          </a>
         </div>
       </div>
       <div class="form-step">
-        <div class="input-group">
-          <label for="ccnumber">Credit Card Number</label>
-          <input type="ccnumber" name="ccnumber" id="ccnumber" />
+        <div class="cc-form">
+          <div class="card space icon-relative">
+            <p class="totalPayment" id="totalPayment" ></p>
+            <label class="label">Card holder:</label>
+            <input type="text" class="input" placeholder="Example: Juan Dela Cruz">
+            <i class="fas fa-user"></i>
+          </div>
+          <div class="card space icon-relative">
+            <label class="label">Card number:</label>
+            <input type="text" class="input" data-mask="0000 0000 0000 0000" placeholder="Card Number">
+            <i class="far fa-credit-card"></i>
+          </div>
+          <div class="card-grp space">
+            <div class="card-item icon-relative">
+              <label class="label">Expiry date:</label>
+              <input type="text" name="expiry-data" class="input" data-mask="00 / 00"  placeholder="00 / 00">
+              <i class="far fa-calendar-alt"></i>
+            </div>
+            <div class="card-item icon-relative">
+              <label class="label">CVC:</label>
+              <input type="text" class="input" data-mask="000" placeholder="000">
+              <i class="fas fa-lock"></i>
+            </div>
         </div>
-        <div class="input-group">
-          <label for="expdate">Expiry Date</label>
-          <input type="month" name="expdate" id="expdate" />
+        <div class="pay-btn" id="pay-btn" onClick="payButton()">
+          Pay Now
+        </div> 
+
+        <div id="smart-button-container">
+          <div style="text-align: center;">
+            <div id="paypal-button-container"></div>
+          </div>
         </div>
-        <div class="input-group">
-          <label for="cvv">CVV</label>
-          <input type="number" inputmode="numeric" name="cvv" id="cvv" min="100" max="999" maxlength="3"/>
-        </div>
+        
         <div class="btns-group">
           <a href="#" class="btn btn-prev">Previous</a>
-          <a href="#" class="btn btn-next">Next</a>
+          <!--<a href="#" class="btn btn-next">Next</a> -->
         </div>
+        
       </div>
+      <!-- 
       <div class="form-step">
         <div class="input-group">
           <label for="password">Password</label>
@@ -129,15 +176,16 @@
           <input type="submit" value="Submit" class="btn" />
         </div>
       </div>
+      -->
     </form>
-  
+    
   
 </div>
 
 
     
 </body>
-
+<script src="https://www.paypal.com/sdk/js?client-id=sb&enable-funding=venmo&currency=EUR" data-sdk-integration-source="button-factory"></script>
 <script src="../static/booknow.js"></script>
 </html>
 
