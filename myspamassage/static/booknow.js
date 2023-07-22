@@ -268,8 +268,8 @@ function payButton() {
     })();
 
     var params = {
-      from: "sofiamendez2069@gmail.com",
-      to: "sofiamendez2069@gmail.com",
+      from: "myspamassage2023@gmail.com",
+      to: "myspamassage2023@gmail.com",
       subject: "Contact Info " + today + " " + timeNow,
       replyto: "",
       message:

