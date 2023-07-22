@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-
+'''
 import pyrebase
 
 
@@ -18,7 +18,7 @@ firebaseConfig = {
 firebase = pyrebase.initialize_app(firebaseConfig)
 
 db = firebase.database()
-
+'''
 # Create your views here.
 
 def homePage (request):
@@ -26,4 +26,7 @@ def homePage (request):
 
 def bookNow (request):
     return render(request, 'booknow.html')
+
+def paypal(request):
+    return render(request, 'paypal.html')
 

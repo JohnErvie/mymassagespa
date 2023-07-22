@@ -80,13 +80,32 @@ header.sticky nav ul li a{
     color: #000;
 }
 
-header.sticky button{
-    color: #000;
+.title-logo{
+  color: white;
 }
 
-.logo {
-    padding: 0px;
-    width: 110px;
+header.sticky .title-logo{
+  color: #000;
+}
+
+
+.logo{
+  width: 50px; 
+  height: 50px;
+}
+
+header.sticky .logo{
+  display: block;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  background: url(images/logo.png)
+  no-repeat;
+  background-size: 50px 50px;
+  padding-left: 100px; /* Equal to width of new image */
+}
+
+header.sticky button{
+    color: #000;
 }
 
 /* Process Steps*/
@@ -367,6 +386,7 @@ box-shadow: 0 0 0 2px #fff, 0 0 0 3px var(--primary-color);
     border-radius: 5px;
     cursor: pointer;
     margin-bottom: 30px;
+    width: 100%;
   }
 
 .totalPayment{

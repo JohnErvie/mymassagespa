@@ -4,7 +4,7 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Body Spa Massage</title>
-    
+    <link rel="shortcut icon" sizes="196x196" href="{% static 'images/logo.png' %}">
     <link rel="stylesheet" href="{% static 'style.css' %}" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,17 +13,28 @@
     <link href="https://fonts.googleapis.com/css2?family=Fugaz+One&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Play&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&family=Play&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
 </head>
 <body>
 
     <header>
-        
-        <a href="{% url 'home' %}"><img class="logo" src="../static/images/logo.jpeg"></a>
+        <div class="logo-header" style="display: flex; ">
+            <a href="{% url 'home' %}">
+                <img class="logo" src="{% static 'images/inverted_logo.png' %}" >
+            </a>
+                <a href="{% url 'home' %}" style="text-decoration:none; margin-top: 5px; margin-left: 5px;">
+                    <b class="title-logo" style="font-size: 30px;">My Body Spa Massage</b>
+                </a>
+        </div>
+            
         <nav>
             <ul class="nav-links">
                 <li><a href="{% url 'home' %}">Home</a></li>
                 <li><a href="{% url 'booknow' %}">Book Now</a></li>
-                <li><a href="#">Contact</a></li>
+                <li><a href = "mailto:myspamassage2023@gmail.com?subject = Feedback&body = Message">
+                    Contact
+                    </a></li>
             </ul>
         </nav>
         <!-- <a class="signreg-btn" href="#"> <button>Sign in</button>  </a> --->
@@ -82,13 +93,15 @@
     <br>
     <br>
     <h3 class="do-email">Email Us: 
-        <a href = "mailto:abc@example.com?subject = Feedback&body = Message">
-        example@gmail.com
+        <a href = "mailto:myspamassage2023@gmail.com?subject = Feedback&body = Message">
+        myspamassage2023@gmail.com
         </a>
     </h3>
 
 </section>
 
 </body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
+</script>
 <script src="../static/app.js"></script>
 </html>

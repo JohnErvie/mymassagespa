@@ -5,7 +5,7 @@
     margin: 0;
     padding: 0;
     
-    font-family: 'Roboto Condensed', sans-serif, 'Righteous', 'Fugaz One', 'Play';
+    font-family: Montserrat, "Segoe UI", Tahoma, Geneva, Verdana,'Roboto Condensed', sans-serif, 'Righteous', 'Fugaz One', 'Play';
 }
 
 .header{
@@ -83,6 +83,29 @@ button:hover{
 
 header.sticky nav ul li a{
     color: #000;
+}
+
+.title-logo{
+    color: white;
+}
+
+header.sticky .title-logo{
+    color: #000;
+}
+
+.logo{
+    width: 50px; 
+    height: 50px;
+}
+
+header.sticky .logo{
+    display: block;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    background: url(images/logo.png)
+    no-repeat;
+    background-size: 50px 50px;
+    padding-left: 100px; /* Equal to width of new image */
 }
 
 header.sticky button{
