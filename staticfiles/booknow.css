@@ -1,0 +1,409 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&family=Play&display=swap');
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    
+    font-family: Montserrat, "Segoe UI", Tahoma, Geneva, Verdana,'Roboto Condensed', sans-serif, 'Righteous', 'Fugaz One', 'Play';
+}
+
+/* ---------------------*/
+
+li, a, button{
+    font-family: "Montserrat", sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    color: #edf0f1;
+}
+
+header{
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    background-color: #24252A;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+    z-index: 100000;
+    transition: 0.6s;
+    padding: 30px 10%;
+}
+
+header.sticky{
+    padding: 5px, 100px;
+    background: rgb(197, 197, 195);
+}
+
+header .logo{
+    cursor: pointer;
+    transition: 0.6s;
+}
+
+.nav-links li{
+    display: inline-block;
+    padding: 0px 30px;
+}
+
+.nav-links li a{
+    transition: all 0.3 ease 0s;
+    text-decoration: none;
+}
+
+.nav-links li a:hover{
+    color: #0089a9;
+}
+/*
+button{
+    padding: 9px 25px;
+    background-color: rgba(0,136,169,1);
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3 ease 0s;
+}
+
+button:hover{
+    background-color: rgba(0,136,169,0.8);
+}*/
+
+button{
+  padding: 0;
+border: none;
+background: none;
+cursor: pointer;
+}
+
+header.sticky nav ul li a{
+    color: #000;
+}
+
+.title-logo{
+  color: white;
+}
+
+header.sticky .title-logo{
+  color: #000;
+}
+
+
+.logo{
+  width: 50px; 
+  height: 50px;
+}
+
+header.sticky .logo{
+  display: block;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  background: url(images/logo.png)
+  no-repeat;
+  background-size: 50px 50px;
+  padding-left: 100px; /* Equal to width of new image */
+}
+
+header.sticky button{
+    color: #000;
+}
+
+/* Process Steps*/
+:root {
+    --primary-color: rgb(11, 78, 179);
+  }
+label {
+	display: block;
+	margin-bottom: 0.5rem;
+}
+
+input {
+display: block;
+width: 100%;
+padding: 0.75rem;
+border: 1px solid #ccc;
+border-radius: 0.25rem;
+}
+
+.width-50 {
+width: 50%;
+}
+
+.ml-auto {
+margin-left: auto;
+}
+
+.text-center {
+text-align: center;
+}
+  
+  /* Progressbar */
+
+.progress-tab-bar-section{
+	margin-top: 150px;
+	
+}
+
+.progressbar {
+position: relative;
+display: flex;
+justify-content: space-between;
+counter-reset: step;
+margin: 5rem 0 10rem;
+}
+
+.progressbar::before,
+.progress {
+content: "";
+position: absolute;
+top: 50%;
+transform: translateY(-50%);
+height: 4px;
+width: 100%;
+background-color: #dcdcdc;
+z-index: -1;
+}
+
+.progress {
+background-color: var(--primary-color);
+width: 0%;
+transition: 0.3s;
+}
+
+.progress-step {
+width: 2.1875rem;
+height: 2.1875rem;
+background-color: #dcdcdc;
+border-radius: 50%;
+display: flex;
+justify-content: center;
+align-items: center;
+}
+
+.progress-step::before {
+counter-increment: step;
+content: counter(step);
+}
+
+.progress-step::after {
+content: attr(data-title);
+position: absolute;
+top: calc(100% + 0.5rem);
+font-size: 0.85rem;
+color: #666;
+}
+
+.progress-step-active {
+background-color: var(--primary-color);
+color: #f3f3f3;
+}
+
+/* Form */
+.form {
+width: clamp(800px, 30%, 430px);
+margin: 0 auto;
+border: 1px solid #ccc;
+border-radius: 0.35rem;
+padding: 1.5rem;
+margin-bottom: 50px;
+}
+
+.form-step {
+display: none;
+transform-origin: top;
+animation: animate 0.5s;
+}
+
+.form-step-active {
+display: block;
+}
+
+.input-group {
+margin: 2rem 0;
+}
+
+@keyframes animate {
+from {
+	transform: scale(1, 0);
+	opacity: 0;
+}
+to {
+	transform: scale(1, 1);
+	opacity: 1;
+}
+}
+
+/* Button */
+.btns-group {
+display: grid;
+grid-template-columns: repeat(2, 1fr);
+gap: 1.5rem;
+}
+
+.btn {
+padding: 0.75rem;
+display: block;
+text-decoration: none;
+background-color: var(--primary-color);
+color: #f3f3f3;
+text-align: center;
+border-radius: 0.25rem;
+cursor: pointer;
+transition: 0.3s;
+}
+.btn:hover {
+box-shadow: 0 0 0 2px #fff, 0 0 0 3px var(--primary-color);
+}
+/********** REQUIRED ***********/
+.required::after{
+  content: " *";
+  color: red;
+  font-size: 20px;
+}
+
+/* ----------------------------------------------*/
+/* Customize the label (the container) */
+.container {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 25px;
+  cursor: pointer;
+  font-size: 18px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  margin-left: 40px;
+}
+
+/* Hide the browser's default radio button */
+.container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+  margin-bottom: 30px;
+}
+
+/* Create a custom radio button */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #eee;
+  border-radius: 50%;
+}
+
+/* On mouse-over, add a grey background color */
+.container:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+/* When the radio button is checked, add a blue background */
+.container input:checked ~ .checkmark {
+  background-color: var(--primary-color);
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the indicator (dot/circle) */
+.container .checkmark:after {
+  top: 9px;
+  left: 9px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: white;
+}
+
+/* ------------- CREDIT CARD FORM -------*/
+
+.cc-form .label{
+  display: block;
+  color: #555555;
+  margin-bottom: 6px;
+}
+
+.input{
+  padding: 13px 0px 13px 25px;
+  width: 100%;
+  text-align: center;
+  border: 2px solid #dddddd;
+  border-radius: 5px;
+  letter-spacing: 1px;
+  word-spacing: 3px;
+  outline: none;
+  font-size: 16px;
+  color: #555555;
+}
+
+.card-grp{
+  display: flex;
+  justify-content: space-between;
+}
+
+.card-item{
+  width: 48%;
+}
+
+.space{
+  margin-bottom: 20px;
+}
+
+.icon-relative{
+  position: relative;
+}
+
+.icon-relative .fas,
+.icon-relative .far{
+  position: absolute;
+  bottom: 12px;
+  left: 15px;
+  font-size: 20px;
+  color: #555555;
+}
+
+.pay-btn{
+    margin-top: 40px;
+    background: #2196F3;
+    padding: 12px;
+    text-align: center;
+    color: #f8f8f8;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 30px;
+    width: 100%;
+  }
+
+.totalPayment{
+  font-weight: bold;
+  margin-bottom: 50px;
+}
+
+
+@media screen and (max-width: 700px){
+  li a{
+    padding: 14px 10px;
+  }
+  
+}
+
+
+
+  
+
+
