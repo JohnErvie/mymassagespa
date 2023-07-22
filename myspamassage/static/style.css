@@ -105,7 +105,7 @@ header.sticky .logo{
     background: url(images/logo.png)
     no-repeat;
     background-size: 50px 50px;
-    padding-left: 30px; /* Equal to width of new image */
+    padding-left: 50px; /* Equal to width of new image */
 }
 
 header.sticky button{
