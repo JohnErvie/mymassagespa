@@ -1,0 +1,2 @@
+web: gunicorn newproject.wsgi --log-file -
+worder: celery -A newproject worker --loglevel=info
