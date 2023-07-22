@@ -23,9 +23,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-c28x^bw0z@lxcutbj3x*@ezg6te*d&rollc$gbx00#v#tg7-9h'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True #False
 
-ALLOWED_HOSTS = ['https://mymassagespa-production.up.railway.app']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
