@@ -126,56 +126,56 @@ function updateProgressbar() {
 }
 
 // FOR PAYPAL
-function initPayPalButton() {
-  var offerDetails = totalPaymentFunc();
-  paypal
-    .Buttons({
-      style: {
-        shape: "rect",
-        color: "gold",
-        layout: "horizontal",
-        label: "paypal",
-      },
+// function initPayPalButton() {
+//   var offerDetails = totalPaymentFunc();
+//   paypal
+//     .Buttons({
+//       style: {
+//         shape: "rect",
+//         color: "gold",
+//         layout: "horizontal",
+//         label: "paypal",
+//       },
 
-      createOrder: function (data, actions) {
-        return actions.order.create({
-          purchase_units: [
-            {
-              description: offerDetails["offerDescription"],
-              amount: {
-                currency_code: "EUR",
-                value: offerDetails["offerValue"],
-              },
-            },
-          ],
-        });
-      },
+//       createOrder: function (data, actions) {
+//         return actions.order.create({
+//           purchase_units: [
+//             {
+//               description: offerDetails["offerDescription"],
+//               amount: {
+//                 currency_code: "EUR",
+//                 value: offerDetails["offerValue"],
+//               },
+//             },
+//           ],
+//         });
+//       },
 
-      onApprove: function (data, actions) {
-        return actions.order.capture().then(function (orderData) {
-          // Full available details
-          console.log(
-            "Capture result",
-            orderData,
-            JSON.stringify(orderData, null, 2)
-          );
+//       onApprove: function (data, actions) {
+//         return actions.order.capture().then(function (orderData) {
+//           // Full available details
+//           console.log(
+//             "Capture result",
+//             orderData,
+//             JSON.stringify(orderData, null, 2)
+//           );
 
-          // Show a success message within this page, e.g.
-          const element = document.getElementById("paypal-button-container");
-          element.innerHTML = "";
-          element.innerHTML = "<h3>Thank you for your payment!</h3>";
+//           // Show a success message within this page, e.g.
+//           const element = document.getElementById("paypal-button-container");
+//           element.innerHTML = "";
+//           element.innerHTML = "<h3>Thank you for your payment!</h3>";
 
-          // Or go to another URL:  actions.redirect('thank_you.html');
-        });
-      },
+//           // Or go to another URL:  actions.redirect('thank_you.html');
+//         });
+//       },
 
-      onError: function (err) {
-        console.log(err);
-      },
-    })
-    .render("#paypal-button-container");
-}
-initPayPalButton();
+//       onError: function (err) {
+//         console.log(err);
+//       },
+//     })
+//     .render("#paypal-button-container");
+// }
+// initPayPalButton();
 
 function payButton() {
   const fullname = document.getElementById("fullname").value;
@@ -330,16 +330,16 @@ window.addEventListener("scroll", function () {
 });
 
 async function getIpInfo() {
-  const getIP_url = "http://ip-api.com/json";
+  const getIP_url = "https://api.ipify.org/?format=json";
   // Make a request and store the response
   const responseIP = await fetch(getIP_url);
   // Decode JSON response:
   const resultIP = await responseIP.json();
   // Output the "code" value inside "currency" object
-  console.log(resultIP.query);
+  console.log(resultIP.ip);
 
   // Set endpoint and your access key
-  const ip = resultIP.query;
+  const ip = resultIP.ip;
   const accessKey = "15e038f9-109a-45c1-a284-04a2ec26abc8";
   const url =
     "https://apiip.net/api/check?ip=" + ip + "&accessKey=" + accessKey;
@@ -351,6 +351,6 @@ async function getIpInfo() {
   const result = await response.json();
 
   // Output the "code" value inside "currency" object
-  console.log(result.currency.code);
+  console.log(result);
 }
 getIpInfo();
