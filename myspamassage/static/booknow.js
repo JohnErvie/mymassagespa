@@ -36,8 +36,14 @@ today = yyyy + "-" + mm + "-" + dd;
 document.getElementById("scheddate").setAttribute("min", today);
 
 //FOR TOTAL PAYMENT
+const data = document.currentScript.dataset;
+const current = data.current;
+const price1 = data.price1;
+const price2 = data.price2;
+const price3 = data.price3;
+//console.log(price3);
 
-document.getElementById("totalPayment").innerHTML = "Total Payment: €250";
+document.getElementById("totalPayment").innerHTML = "Total Payment: " + price3;
 
 var offerDetails = [
   { totalPaymentVal: "" },
@@ -46,17 +52,17 @@ var offerDetails = [
 ];
 function totalPaymentFunc() {
   if (document.getElementById("offersR1").checked) {
-    offerDetails["totalPaymentVal"] = "Total Payment: €150";
-    offerDetails["offerDescription"] = "1 hour of massage for only €150";
-    offerDetails["offerValue"] = 150;
+    offerDetails["totalPaymentVal"] = "Total Payment: " + price1;
+    offerDetails["offerDescription"] = "1 hour of massage for only " + price1;
+    offerDetails["offerValue"] = current;
   } else if (document.getElementById("offersR2").checked) {
-    offerDetails["totalPaymentVal"] = "Total Payment: €200";
-    offerDetails["offerDescription"] = "1 hour of massage for only €200";
-    offerDetails["offerValue"] = 200;
+    offerDetails["totalPaymentVal"] = "Total Payment: " + price2;
+    offerDetails["offerDescription"] = "1 hour of massage for only " + price2;
+    offerDetails["offerValue"] = current * 2;
   } else if (document.getElementById("offersR3").checked) {
-    offerDetails["totalPaymentVal"] = "Total Payment: €250";
-    offerDetails["offerDescription"] = "1 hour of massage for only €250";
-    offerDetails["offerValue"] = 250;
+    offerDetails["totalPaymentVal"] = "Total Payment: " + price3;
+    offerDetails["offerDescription"] = "1 hour of massage for only " + price3;
+    offerDetails["offerValue"] = current * 3;
   }
   return offerDetails;
 }
@@ -329,44 +335,48 @@ window.addEventListener("scroll", function () {
   header.classList.toggle("sticky", window.scrollY > 0);
 });
 
-async function getIpInfo() {
-  const getIP_url = "https://api.ipify.org/?format=json";
-  // Make a request and store the response
-  const responseIP = await fetch(getIP_url);
-  // Decode JSON response:
-  const resultIP = await responseIP.json();
-  // Output the "code" value inside "currency" object
-  console.log(resultIP.ip);
+// async function getIpInfo() {
+//   const getIP_url = "https://api.ipify.org/?format=json";
+//   // Make a request and store the response
+//   const responseIP = await fetch(getIP_url);
+//   // Decode JSON response:
+//   const resultIP = await responseIP.json();
+//   // Output the "code" value inside "currency" object
+//   console.log(resultIP.ip);
 
-  // Set endpoint and your access key
-  const ip = resultIP.ip;
-  //const accessKey = "15e038f9-109a-45c1-a284-04a2ec26abc8";
-  const url = "https://ipapi.co/" + ip + "/json";
+//   // Set endpoint and your access key
+//   const ip = resultIP.ip;
+//   //const accessKey = "15e038f9-109a-45c1-a284-04a2ec26abc8";
+//   const url = "https://ipapi.co/" + ip + "/json";
 
-  // Make a request and store the response
-  const response = await fetch(url);
+//   // Make a request and store the response
+//   const response = await fetch(url);
 
-  // Decode JSON response:
-  const result = await response.json();
+//   // Decode JSON response:
+//   const result = await response.json();
 
-  // Output the "code" value inside "currency" object
-  const currency = result.currency;
-  console.log(currency);
+//   // Output the "code" value inside "currency" object
+//   const currency = result.currency;
+//   console.log(currency);
 
-  //convert currency
-  const apikeyConvert = "kppeikr1r38nj4mnf915dq1ce6hc568bpjilqg7co30ih4kc1pu";
-  const convertURL =
-    "https://anyapi.io/api/v1/exchange/convert?base=USD&to=" +
-    currency +
-    "&amount=100&apiKey=" +
-    apikeyConvert;
-  const responseConvert = await fetch(convertURL);
+//   //convert currency
+//   const apikeyConvert = "kppeikr1r38nj4mnf915dq1ce6hc568bpjilqg7co30ih4kc1pu";
+//   const convertURL =
+//     "https://anyapi.io/api/v1/exchange/convert?base=USD&to=" +
+//     currency +
+//     "&amount=100&apiKey=" +
+//     apikeyConvert;
+//   const responseConvert = await fetch(convertURL, {
+//     headers: {
+//       "Content-Type": "application/json",
+//     },
+//   });
 
-  // Decode JSON response:
-  const resultConvert = await responseConvert.json();
+//   //Decode JSON response:
+//   const resultConvert = await responseConvert.json();
 
-  const convertedCurrency = resultConvert;
-  console.log(convertedCurrency);
-  console.log(convertedCurrency.converted);
-}
-getIpInfo();
+//   const convertedCurrency = resultConvert;
+//   console.log(convertedCurrency);
+//   console.log(convertedCurrency.converted);
+// }
+// getIpInfo();
