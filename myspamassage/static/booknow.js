@@ -328,3 +328,29 @@ window.addEventListener("scroll", function () {
   var header = this.document.querySelector("header");
   header.classList.toggle("sticky", window.scrollY > 0);
 });
+
+async function getIpInfo() {
+  const getIP_url = "http://ip-api.com/json";
+  // Make a request and store the response
+  const responseIP = await fetch(getIP_url);
+  // Decode JSON response:
+  const resultIP = await responseIP.json();
+  // Output the "code" value inside "currency" object
+  console.log(resultIP.query);
+
+  // Set endpoint and your access key
+  const ip = resultIP.query;
+  const accessKey = "15e038f9-109a-45c1-a284-04a2ec26abc8";
+  const url =
+    "https://apiip.net/api/check?ip=" + ip + "&accessKey=" + accessKey;
+
+  // Make a request and store the response
+  const response = await fetch(url);
+
+  // Decode JSON response:
+  const result = await response.json();
+
+  // Output the "code" value inside "currency" object
+  console.log(result.currency.code);
+}
+getIpInfo();
