@@ -55,7 +55,7 @@ def bookNow (request):
     currency = getCurrency["currency"]
     #print(currency)
     
-    USDPrice = 3.31
+    USDPrice = 5
     convertParam = "/api/v1/exchange/convert?base=USD&to=" + currency + "&amount=" \
     + str(USDPrice) + "&apiKey=kppeikr1r38nj4mnf915dq1ce6hc568bpjilqg7co30ih4kc1pu"
     converted = connectAPI("anyapi.io", convertParam)
