@@ -340,9 +340,8 @@ async function getIpInfo() {
 
   // Set endpoint and your access key
   const ip = resultIP.ip;
-  const accessKey = "15e038f9-109a-45c1-a284-04a2ec26abc8";
-  const url =
-    "https://apiip.net/api/check?ip=" + ip + "&accessKey=" + accessKey;
+  //const accessKey = "15e038f9-109a-45c1-a284-04a2ec26abc8";
+  const url = "https://ipapi.co/" + ip + "/json";
 
   // Make a request and store the response
   const response = await fetch(url);
@@ -351,6 +350,23 @@ async function getIpInfo() {
   const result = await response.json();
 
   // Output the "code" value inside "currency" object
-  console.log(result);
+  const currency = result.currency;
+  console.log(currency);
+
+  //convert currency
+  const apikeyConvert = "kppeikr1r38nj4mnf915dq1ce6hc568bpjilqg7co30ih4kc1pu";
+  const convertURL =
+    "https://anyapi.io/api/v1/exchange/convert?base=USD&to=" +
+    currency +
+    "&amount=100&apiKey=" +
+    apikeyConvert;
+  const responseConvert = await fetch(convertURL);
+
+  // Decode JSON response:
+  const resultConvert = await responseConvert.json();
+
+  const convertedCurrency = resultConvert;
+  console.log(convertedCurrency);
+  console.log(convertedCurrency.converted);
 }
 getIpInfo();
