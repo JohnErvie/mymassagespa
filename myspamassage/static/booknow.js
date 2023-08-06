@@ -1,3 +1,61 @@
+// FOR PRICING
+async function getIpInfo() {
+  const getIP_url = "https://api.ipify.org/?format=json";
+  // Make a request and store the response
+  const responseIP = await fetch(getIP_url);
+  // Decode JSON response:
+  const resultIP = await responseIP.json();
+  // Output the "code" value inside "currency" object
+  //console.log(resultIP.ip);
+
+  // Set endpoint and your access key
+  const ip = resultIP.ip;
+  //const accessKey = "15e038f9-109a-45c1-a284-04a2ec26abc8";
+  const url = "https://ipapi.co/" + ip + "/json";
+
+  // Make a request and store the response
+  const response = await fetch(url);
+
+  // Decode JSON response:
+  const result = await response.json();
+
+  // Output the "code" value inside "currency" object
+  const currency = result.currency;
+  //console.log(currency);
+
+  //convert currency
+  const apikeyConvert = "8d1dbec76a264c97b3026a4f57d94978";
+  const convertURL =
+    "https://openexchangerates.org/api/latest.json?app_id=" + apikeyConvert;
+  const responseConvert = await fetch(convertURL);
+
+  // //Decode JSON response:
+  const resultConvert = await responseConvert.json();
+
+  const convertedCurrency = resultConvert;
+  //console.log(convertedCurrency);
+  //console.log(convertedCurrency.rates[currency]);
+  const totalCurrency = convertedCurrency.rates[currency];
+
+  const res = {
+    currencyCode: currency,
+    totalCurrency: totalCurrency,
+  };
+
+  return res;
+}
+// const pricingResult = getIpInfo();
+// //console.log(pricingResult);
+// const totalCurrency = pricingResult.then((value) => {
+//   console.log(value.totalCurrency);
+// });
+
+// const currencyCode = pricingResult.then((value) => {
+//   console.log(value.currencyCode);
+// });
+
+// console.log(totalCurrency, currencyCode);
+
 const prevBtns = document.querySelectorAll(".btn-prev");
 const nextBtns = document.querySelectorAll(".btn-next");
 const progress = document.getElementById("progress");
@@ -36,12 +94,17 @@ today = yyyy + "-" + mm + "-" + dd;
 document.getElementById("scheddate").setAttribute("min", today);
 
 //FOR TOTAL PAYMENT
+//const data = document.currentScript.dataset;
+// const current = current;
+// const price1 = totalCurrency * 150 + " " + currencyCode;
+// const price2 = totalCurrency * 200 + " " + currencyCode;
+// const price3 = totalCurrency * 300 + " " + currencyCode;
 const data = document.currentScript.dataset;
 const current = data.current;
 const price1 = data.price1;
 const price2 = data.price2;
 const price3 = data.price3;
-//console.log(price3);
+console.log("price3", current);
 
 document.getElementById("totalPayment").innerHTML = "Total Payment: " + price3;
 
@@ -54,15 +117,15 @@ function totalPaymentFunc() {
   if (document.getElementById("offersR1").checked) {
     offerDetails["totalPaymentVal"] = "Total Payment: " + price1;
     offerDetails["offerDescription"] = "1 hour of massage for only " + price1;
-    offerDetails["offerValue"] = current;
+    offerDetails["offerValue"] = price1;
   } else if (document.getElementById("offersR2").checked) {
     offerDetails["totalPaymentVal"] = "Total Payment: " + price2;
     offerDetails["offerDescription"] = "1 hour of massage for only " + price2;
-    offerDetails["offerValue"] = current * 2;
+    offerDetails["offerValue"] = price2;
   } else if (document.getElementById("offersR3").checked) {
     offerDetails["totalPaymentVal"] = "Total Payment: " + price3;
     offerDetails["offerDescription"] = "1 hour of massage for only " + price3;
-    offerDetails["offerValue"] = current * 3;
+    offerDetails["offerValue"] = price3;
   }
   return offerDetails;
 }
@@ -334,75 +397,3 @@ window.addEventListener("scroll", function () {
   var header = this.document.querySelector("header");
   header.classList.toggle("sticky", window.scrollY > 0);
 });
-
-async function getIpInfo() {
-  const getIP_url = "https://api.ipify.org/?format=json";
-  // Make a request and store the response
-  const responseIP = await fetch(getIP_url);
-  // Decode JSON response:
-  const resultIP = await responseIP.json();
-  // Output the "code" value inside "currency" object
-  console.log(resultIP.ip);
-
-  // Set endpoint and your access key
-  const ip = resultIP.ip;
-  //const accessKey = "15e038f9-109a-45c1-a284-04a2ec26abc8";
-  const url = "https://ipapi.co/" + ip + "/json";
-
-  // Make a request and store the response
-  const response = await fetch(url);
-
-  // Decode JSON response:
-  const result = await response.json();
-
-  // Output the "code" value inside "currency" object
-  const currency = result.currency;
-  console.log(currency);
-
-  //convert currency
-  const apikeyConvert = "kppeikr1r38nj4mnf915dq1ce6hc568bpjilqg7co30ih4kc1pu";
-  const convertURL =
-    "https://anyapi.io/api/v1/exchange/convert?base=USD&to=" +
-    currency +
-    "&amount=100&apiKey=" +
-    apikeyConvert;
-  // const responseConvert = await fetch(convertURL, {
-  //   headers: {
-  //     "Content-Type": "application/json",
-  //   },
-  // });
-
-  // //Decode JSON response:
-  // const resultConvert = await responseConvert.json();
-
-  // const convertedCurrency = resultConvert;
-  // console.log(convertedCurrency);
-  // console.log(convertedCurrency.converted);
-
-  const sendingData = {
-    base: "USD",
-    to: currency,
-    amount: 100,
-    apiKey: apikeyConvert,
-  };
-
-  $.ajax({
-    url: "https://anyapi.io/api/v1/exchange/convert",
-    //crossDomain: true,
-    headers: {
-      "Access-Control-Allow-Origin": "*",
-      "Content-Type": "application/json",
-    },
-    //method: "POST",
-    type: "POST",
-    //dataType: "jsonp",
-    data: sendingData,
-    success: function (response) {
-      console.log(response);
-    },
-    error: function (error) {
-      console.log(error);
-    },
-  });
-}
-getIpInfo();

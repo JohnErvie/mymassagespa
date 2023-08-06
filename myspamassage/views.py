@@ -67,10 +67,14 @@ def bookNow (request):
     # # print("price1:", price1)
     # # print("price2:", price2)
     # # print("price3:", price3)
-    # context = {"current": converted, "price1": price1, "price2": price2, "price3": price3}
+    converted = 150
+    price1 = 150
+    price2 = 200
+    price3 = 300
+    context = {"current": converted, "price1": price1, "price2": price2, "price3": price3}
 
     # return render(request, 'booknow.html', context)
-    return render(request, 'booknow.html')
+    return render(request, 'booknow.html', context)
 
 def paypal(request):
     return render(request, 'paypal.html')
