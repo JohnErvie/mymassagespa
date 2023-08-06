@@ -24,17 +24,17 @@ db = firebase.database()
 '''
 # Create your views here.
 
-def connectAPI(domain, param):
-    conn = http.client.HTTPSConnection(domain)
+# def connectAPI(domain, param):
+#     conn = http.client.HTTPSConnection(domain)
 
-    conn.request("GET", param)
+#     conn.request("GET", param)
 
-    res = conn.getresponse()
-    data = res.read()
-    data = data.decode("utf-8")
-    dataJson = json.loads(data)
+#     res = conn.getresponse()
+#     data = res.read()
+#     data = data.decode("utf-8")
+#     dataJson = json.loads(data)
 
-    return dataJson
+#     return dataJson
 
 def homePage (request):
     return render(request, 'index.html')
@@ -44,32 +44,33 @@ def bookNow (request):
     # conn.request("GET", "/?format=json")
     # res = conn.getresponse()
     # data = res.read()
-    getIp = connectAPI("api.ipify.org", "/?format=json")
-    ipAdd = getIp["ip"]
-    #print(ipAdd)
+    # getIp = connectAPI("api.ipify.org", "/?format=json")
+    # ipAdd = getIp["ip"]
+    # #print(ipAdd)
 
-    getCurrencyURL = 'https://ipapi.co/' + ipAdd +'/json/'
-    getCurrency = get(getCurrencyURL)
-    #ipAdd = getIp["ip"]
-    getCurrency = getCurrency.json()
-    currency = getCurrency["currency"]
-    #print(currency)
+    # getCurrencyURL = 'https://ipapi.co/' + ipAdd +'/json/'
+    # getCurrency = get(getCurrencyURL)
+    # #ipAdd = getIp["ip"]
+    # getCurrency = getCurrency.json()
+    # currency = getCurrency["currency"]
+    # #print(currency)
     
-    USDPrice = 5
-    convertParam = "/api/v1/exchange/convert?base=USD&to=" + currency + "&amount=" \
-    + str(USDPrice) + "&apiKey=kppeikr1r38nj4mnf915dq1ce6hc568bpjilqg7co30ih4kc1pu"
-    converted = connectAPI("anyapi.io", convertParam)
-    converted = converted["converted"]
+    # USDPrice = 5
+    # convertParam = "/api/v1/exchange/convert?base=USD&to=" + currency + "&amount=" \
+    # + str(USDPrice) + "&apiKey=kppeikr1r38nj4mnf915dq1ce6hc568bpjilqg7co30ih4kc1pu"
+    # converted = connectAPI("anyapi.io", convertParam)
+    # converted = converted["converted"]
 
-    price1 = "{:.2f} ".format(converted) + currency
-    price2 = "{:.2f} ".format(converted*2) + currency
-    price3 = "{:.2f} ".format(converted*3) + currency
-    # print("price1:", price1)
-    # print("price2:", price2)
-    # print("price3:", price3)
-    context = {"current": converted, "price1": price1, "price2": price2, "price3": price3}
+    # price1 = "{:.2f} ".format(converted) + currency
+    # price2 = "{:.2f} ".format(converted*2) + currency
+    # price3 = "{:.2f} ".format(converted*3) + currency
+    # # print("price1:", price1)
+    # # print("price2:", price2)
+    # # print("price3:", price3)
+    # context = {"current": converted, "price1": price1, "price2": price2, "price3": price3}
 
-    return render(request, 'booknow.html', context)
+    # return render(request, 'booknow.html', context)
+    return render(request, 'booknow.html')
 
 def paypal(request):
     return render(request, 'paypal.html')

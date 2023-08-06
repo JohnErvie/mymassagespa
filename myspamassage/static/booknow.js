@@ -335,48 +335,74 @@ window.addEventListener("scroll", function () {
   header.classList.toggle("sticky", window.scrollY > 0);
 });
 
-// async function getIpInfo() {
-//   const getIP_url = "https://api.ipify.org/?format=json";
-//   // Make a request and store the response
-//   const responseIP = await fetch(getIP_url);
-//   // Decode JSON response:
-//   const resultIP = await responseIP.json();
-//   // Output the "code" value inside "currency" object
-//   console.log(resultIP.ip);
+async function getIpInfo() {
+  const getIP_url = "https://api.ipify.org/?format=json";
+  // Make a request and store the response
+  const responseIP = await fetch(getIP_url);
+  // Decode JSON response:
+  const resultIP = await responseIP.json();
+  // Output the "code" value inside "currency" object
+  console.log(resultIP.ip);
 
-//   // Set endpoint and your access key
-//   const ip = resultIP.ip;
-//   //const accessKey = "15e038f9-109a-45c1-a284-04a2ec26abc8";
-//   const url = "https://ipapi.co/" + ip + "/json";
+  // Set endpoint and your access key
+  const ip = resultIP.ip;
+  //const accessKey = "15e038f9-109a-45c1-a284-04a2ec26abc8";
+  const url = "https://ipapi.co/" + ip + "/json";
 
-//   // Make a request and store the response
-//   const response = await fetch(url);
+  // Make a request and store the response
+  const response = await fetch(url);
 
-//   // Decode JSON response:
-//   const result = await response.json();
+  // Decode JSON response:
+  const result = await response.json();
 
-//   // Output the "code" value inside "currency" object
-//   const currency = result.currency;
-//   console.log(currency);
+  // Output the "code" value inside "currency" object
+  const currency = result.currency;
+  console.log(currency);
 
-//   //convert currency
-//   const apikeyConvert = "kppeikr1r38nj4mnf915dq1ce6hc568bpjilqg7co30ih4kc1pu";
-//   const convertURL =
-//     "https://anyapi.io/api/v1/exchange/convert?base=USD&to=" +
-//     currency +
-//     "&amount=100&apiKey=" +
-//     apikeyConvert;
-//   const responseConvert = await fetch(convertURL, {
-//     headers: {
-//       "Content-Type": "application/json",
-//     },
-//   });
+  //convert currency
+  const apikeyConvert = "kppeikr1r38nj4mnf915dq1ce6hc568bpjilqg7co30ih4kc1pu";
+  const convertURL =
+    "https://anyapi.io/api/v1/exchange/convert?base=USD&to=" +
+    currency +
+    "&amount=100&apiKey=" +
+    apikeyConvert;
+  // const responseConvert = await fetch(convertURL, {
+  //   headers: {
+  //     "Content-Type": "application/json",
+  //   },
+  // });
 
-//   //Decode JSON response:
-//   const resultConvert = await responseConvert.json();
+  // //Decode JSON response:
+  // const resultConvert = await responseConvert.json();
 
-//   const convertedCurrency = resultConvert;
-//   console.log(convertedCurrency);
-//   console.log(convertedCurrency.converted);
-// }
-// getIpInfo();
+  // const convertedCurrency = resultConvert;
+  // console.log(convertedCurrency);
+  // console.log(convertedCurrency.converted);
+
+  const sendingData = {
+    base: "USD",
+    to: currency,
+    amount: 100,
+    apiKey: apikeyConvert,
+  };
+
+  $.ajax({
+    url: "https://anyapi.io/api/v1/exchange/convert",
+    //crossDomain: true,
+    headers: {
+      "Access-Control-Allow-Origin": "*",
+      "Content-Type": "application/json",
+    },
+    //method: "POST",
+    type: "POST",
+    //dataType: "jsonp",
+    data: sendingData,
+    success: function (response) {
+      console.log(response);
+    },
+    error: function (error) {
+      console.log(error);
+    },
+  });
+}
+getIpInfo();
