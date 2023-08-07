@@ -22,4 +22,5 @@ urlpatterns = [
     path('', views.homePage, name="home"),
     path('booknow/', views.bookNow, name="booknow"),
     path('signin/', views.paypal, name="paypal"),
+    path('addcard/', views.addcard, name="addcard"),
 ]

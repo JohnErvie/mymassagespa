@@ -79,3 +79,6 @@ def bookNow (request):
 def paypal(request):
     return render(request, 'paypal.html')
 
+def addcard(request):
+    return render(request, 'creditcard.html')
+

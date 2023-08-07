@@ -141,7 +141,6 @@ text-align: center;
 
 .progress-tab-bar-section{
 	margin-top: 150px;
-	
 }
 
 .progressbar {
@@ -200,7 +199,7 @@ color: #f3f3f3;
 
 /* Form */
 .form {
-width: clamp(800px, 30%, 430px);
+width: clamp(900px, 30%, 430px);
 margin: 0 auto;
 border: 1px solid #ccc;
 border-radius: 0.35rem;
@@ -401,9 +400,3 @@ box-shadow: 0 0 0 2px #fff, 0 0 0 3px var(--primary-color);
   }
   
 }
-
-
-
-  
-
-

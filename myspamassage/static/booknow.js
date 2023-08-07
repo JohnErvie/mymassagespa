@@ -254,10 +254,12 @@ function payButton() {
   const password = document.getElementById("password").value;
   const scheddate = document.getElementById("scheddate").value;
   const time = document.getElementById("time").value;
-  const cardHolder = document.getElementById("cardholder").value;
-  const cardNumber = document.getElementById("cardnumber").value;
-  const expDate = document.getElementById("expdate").value;
-  const CVV = document.getElementById("cvv").value;
+  const cardHolder = document.getElementById("cardName").value;
+  const cardNumber = document.getElementById("cardNumber").value;
+  const cardMonth = document.getElementById("cardMonth").value;
+  const cardDate = document.getElementById("cardYear").value;
+  const expDate = cardMonth + "/" + cardDate;
+  const CVV = document.getElementById("cardCvv").value;
 
   if (
     cardHolder.length > 0 &&
