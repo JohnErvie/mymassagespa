@@ -1,49 +1,49 @@
 // FOR PRICING
-async function getIpInfo() {
-  const getIP_url = "https://api.ipify.org/?format=json";
-  // Make a request and store the response
-  const responseIP = await fetch(getIP_url);
-  // Decode JSON response:
-  const resultIP = await responseIP.json();
-  // Output the "code" value inside "currency" object
-  //console.log(resultIP.ip);
+// async function getIpInfo() {
+//   const getIP_url = "https://api.ipify.org/?format=json";
+//   // Make a request and store the response
+//   const responseIP = await fetch(getIP_url);
+//   // Decode JSON response:
+//   const resultIP = await responseIP.json();
+//   // Output the "code" value inside "currency" object
+//   //console.log(resultIP.ip);
 
-  // Set endpoint and your access key
-  const ip = resultIP.ip;
-  //const accessKey = "15e038f9-109a-45c1-a284-04a2ec26abc8";
-  const url = "https://ipapi.co/" + ip + "/json";
+//   // Set endpoint and your access key
+//   const ip = resultIP.ip;
+//   //const accessKey = "15e038f9-109a-45c1-a284-04a2ec26abc8";
+//   const url = "https://ipapi.co/" + ip + "/json";
 
-  // Make a request and store the response
-  const response = await fetch(url);
+//   // Make a request and store the response
+//   const response = await fetch(url);
 
-  // Decode JSON response:
-  const result = await response.json();
+//   // Decode JSON response:
+//   const result = await response.json();
 
-  // Output the "code" value inside "currency" object
-  const currency = result.currency;
-  //console.log(currency);
+//   // Output the "code" value inside "currency" object
+//   const currency = result.currency;
+//   //console.log(currency);
 
-  //convert currency
-  const apikeyConvert = "8d1dbec76a264c97b3026a4f57d94978";
-  const convertURL =
-    "https://openexchangerates.org/api/latest.json?app_id=" + apikeyConvert;
-  const responseConvert = await fetch(convertURL);
+//   //convert currency
+//   const apikeyConvert = "8d1dbec76a264c97b3026a4f57d94978";
+//   const convertURL =
+//     "https://openexchangerates.org/api/latest.json?app_id=" + apikeyConvert;
+//   const responseConvert = await fetch(convertURL);
 
-  // //Decode JSON response:
-  const resultConvert = await responseConvert.json();
+//   // //Decode JSON response:
+//   const resultConvert = await responseConvert.json();
 
-  const convertedCurrency = resultConvert;
-  //console.log(convertedCurrency);
-  //console.log(convertedCurrency.rates[currency]);
-  const totalCurrency = convertedCurrency.rates[currency];
+//   const convertedCurrency = resultConvert;
+//   //console.log(convertedCurrency);
+//   //console.log(convertedCurrency.rates[currency]);
+//   const totalCurrency = convertedCurrency.rates[currency];
 
-  const res = {
-    currencyCode: currency,
-    totalCurrency: totalCurrency,
-  };
+//   const res = {
+//     currencyCode: currency,
+//     totalCurrency: totalCurrency,
+//   };
 
-  return res;
-}
+//   return res;
+// }
 // const pricingResult = getIpInfo();
 // //console.log(pricingResult);
 // const totalCurrency = pricingResult.then((value) => {
@@ -104,7 +104,7 @@ const current = data.current;
 const price1 = data.price1;
 const price2 = data.price2;
 const price3 = data.price3;
-console.log("price3", current);
+//console.log("price3", current);
 
 document.getElementById("totalPayment").innerHTML = "Total Payment: " + price3;
 
