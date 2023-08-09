@@ -106,7 +106,7 @@ const price2 = data.price2;
 const price3 = data.price3;
 //console.log("price3", current);
 
-document.getElementById("totalPayment").innerHTML = "Total Payment: " + price3;
+// document.getElementById("totalPayment").innerHTML = "Total Payment: " + price3;
 
 var offerDetails = [
   { totalPaymentVal: "" },
@@ -155,8 +155,8 @@ nextBtns.forEach((btn) => {
         updateProgressbar();
         //alert(formStepsNum);
         var totalValInfo = totalPaymentFunc();
-        document.getElementById("totalPayment").innerHTML =
-          totalValInfo["totalPaymentVal"];
+        // document.getElementById("totalPayment").innerHTML =
+        //   totalValInfo["totalPaymentVal"];
       }
     }
   });
